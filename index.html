@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nishchay Patel</title>
+<meta name="description" content="Nishchay Patel. Research on AI-driven versus conventional methods in operations research: intermittent demand forecasting, decision-aligned evaluation, inventory policy.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbfaf7;
+    --surface: #ffffff;
+    --text: #1d1d1b;
+    --muted: #5d5b55;
+    --faint: #8a877f;
+    --border: #e4e0d7;
+    --accent: #1f5f8b;
+    --accent-soft: #e6eff6;
+    --pill-bg: #eef4ea;
+    --pill-text: #34612a;
+    --pill2-bg: #f6efe2;
+    --pill2-text: #7a5414;
+    --shadow: 0 1px 2px rgba(30, 28, 24, .04), 0 4px 16px rgba(30, 28, 24, .04);
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141413;
+      --surface: #1c1c1a;
+      --text: #ecebe6;
+      --muted: #aaa79e;
+      --faint: #7d7a72;
+      --border: #2e2d2a;
+      --accent: #7fb6dd;
+      --accent-soft: #1b2a35;
+      --pill-bg: #1f2c1b;
+      --pill-text: #a5cf96;
+      --pill2-bg: #2e2617;
+      --pill2-text: #e0bb78;
+      --shadow: none;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141413;
+    --surface: #1c1c1a;
+    --text: #ecebe6;
+    --muted: #aaa79e;
+    --faint: #7d7a72;
+    --border: #2e2d2a;
+    --accent: #7fb6dd;
+    --accent-soft: #1b2a35;
+    --pill-bg: #1f2c1b;
+    --pill-text: #a5cf96;
+    --pill2-bg: #2e2617;
+    --pill2-text: #e0bb78;
+    --shadow: none;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 4.5rem; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 16px/1.65 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+  a:hover { text-decoration-thickness: 2px; }
+  .sans { font-family: Inter, system-ui, -apple-system, 'Segoe UI', sans-serif; }
+
+  /* nav */
+  header.nav {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-inner {
+    max-width: 52rem; margin: 0 auto; padding: .7rem 1rem;
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .nav-name { font-weight: 600; color: var(--text); text-decoration: none; font-size: .95rem; white-space: nowrap; }
+  .nav-links { display: flex; gap: 1.1rem; margin-left: auto; overflow-x: auto; scrollbar-width: none; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { color: var(--muted); text-decoration: none; font-size: .88rem; white-space: nowrap; }
+  .nav-links a:hover { color: var(--text); }
+  .theme-btn {
+    flex: none; border: 1px solid var(--border); background: var(--surface); color: var(--muted);
+    width: 2rem; height: 2rem; border-radius: 50%; cursor: pointer; display: grid; place-items: center;
+  }
+  .theme-btn:hover { color: var(--text); }
+  .theme-btn svg { width: 15px; height: 15px; }
+
+  main { max-width: 52rem; margin: 0 auto; padding: 0 1rem 4rem; }
+
+  /* hero */
+  .hero { padding: 3.5rem 0 2rem; }
+  .hero h1 { font-size: clamp(2rem, 5vw, 2.6rem); line-height: 1.15; margin: 0 0 .5rem; font-weight: 600; letter-spacing: -.01em; }
+  .hero .lede { font-size: 1.15rem; color: var(--muted); margin: 0 0 1.4rem; max-width: 38rem; }
+  .links { display: flex; flex-wrap: wrap; gap: .5rem; }
+  .links a {
+    display: inline-flex; align-items: center; gap: .4rem; text-decoration: none;
+    font-size: .85rem; color: var(--text); border: 1px solid var(--border); background: var(--surface);
+    padding: .35rem .75rem; border-radius: 999px;
+  }
+  .links a:hover { border-color: var(--accent); color: var(--accent); }
+  .links svg { width: 14px; height: 14px; }
+
+  section { padding-top: 2.2rem; }
+  h2 {
+    font-family: Inter, system-ui, sans-serif; font-size: .78rem; font-weight: 600;
+    letter-spacing: .09em; text-transform: uppercase; color: var(--faint);
+    margin: 0 0 1rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border);
+  }
+  p { margin: 0 0 1rem; }
+
+  .interests { margin: 0; padding: 0; list-style: none; display: grid; gap: .6rem; }
+  .interests li { padding-left: 1rem; position: relative; }
+  .interests li::before { content: ""; position: absolute; left: 0; top: .72em; width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+
+  /* cards */
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 1.25rem 1.35rem; margin-bottom: 1rem; box-shadow: var(--shadow);
+  }
+  .card h3 { font-size: 1.12rem; line-height: 1.35; margin: .45rem 0 .5rem; font-weight: 600; }
+  .meta { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem; font-size: .78rem; color: var(--faint); }
+  .pill { font-weight: 500; padding: .12rem .55rem; border-radius: 999px; background: var(--pill-bg); color: var(--pill-text); }
+  .pill.review { background: var(--pill2-bg); color: var(--pill2-text); }
+  .card .note { color: var(--muted); font-size: .94rem; margin-bottom: .75rem; }
+  .findings { margin: 0 0 .9rem; padding-left: 1.1rem; font-size: .95rem; }
+  .findings li { margin-bottom: .35rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: .4rem 1rem; font-size: .85rem; }
+  .actions a { text-decoration: none; font-weight: 500; }
+  .actions a:hover { text-decoration: underline; }
+
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; }
+  .grid .card { margin: 0; display: flex; flex-direction: column; }
+  .grid .card h3 { font-family: Inter, system-ui, sans-serif; font-size: .98rem; margin-top: 0; }
+  .grid .card p { font-size: .93rem; color: var(--muted); flex: 1; }
+  .tags { display: flex; flex-wrap: wrap; gap: .35rem; margin-bottom: .8rem; }
+  .tag { font-size: .72rem; padding: .1rem .5rem; border-radius: 4px; background: var(--accent-soft); color: var(--accent); }
+
+  /* timeline */
+  .entry { display: grid; grid-template-columns: 9.5rem 1fr; gap: .25rem 1.25rem; margin-bottom: 1.4rem; }
+  .entry .when { font-size: .82rem; color: var(--faint); padding-top: .2rem; }
+  .entry .what { font-weight: 600; }
+  .entry .where { color: var(--muted); font-size: .95rem; margin-bottom: .4rem; }
+  .entry ul { margin: 0; padding-left: 1.1rem; font-size: .95rem; }
+  .entry li { margin-bottom: .3rem; }
+  @media (max-width: 600px) {
+    .entry { grid-template-columns: 1fr; }
+    .nav-name { display: none; }
+    .nav-links { margin-left: 0; }
+    .theme-btn { margin-left: auto; }
+  }
+
+  .skills { display: grid; gap: .55rem; font-size: .95rem; }
+  .skills b { font-weight: 600; }
+
+  footer { max-width: 52rem; margin: 0 auto; padding: 1.5rem 1rem 3rem; border-top: 1px solid var(--border); font-size: .8rem; color: var(--faint); }
+</style>
+</head>
+<body>
+
+<header class="nav sans">
+  <div class="nav-inner">
+    <a class="nav-name" href="#top">Nishchay Patel</a>
+    <nav class="nav-links" aria-label="Sections">
+      <a href="#research">Research</a>
+      <a href="#papers">Papers</a>
+      <a href="#software">Software</a>
+      <a href="#experience">Experience</a>
+      <a href="#education">Education</a>
+    </nav>
+    <button class="theme-btn" id="theme" type="button" aria-label="Toggle dark mode">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main id="top">
+
+  <div class="hero">
+    <h1>Nishchay Patel</h1>
+    <p class="lede">I study when learned models actually improve planning and
+    inventory decisions, and how to judge a forecaster by the decision it feeds
+    instead of by forecast error alone.</p>
+    <div class="links sans">
+      <a href="mailto:nishchaypatel026@gmail.com">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+        Email</a>
+      <a href="https://github.com/NISHCHAY026">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.69 5.39-5.25 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5z"/></svg>
+        GitHub</a>
+      <a href="https://www.linkedin.com/in/nishchaypatel">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+        LinkedIn</a>
+      <a href="https://orcid.org/0009-0004-8807-9741">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24zM8.1 17.6H6.6V7.3h1.5v10.3zm-.75-11.6a.98.98 0 1 1 0-1.96.98.98 0 0 1 0 1.96zM10.2 7.3h4c3.8 0 5.5 2.7 5.5 5.15 0 2.67-2.07 5.15-5.48 5.15H10.2V7.3zm1.5 8.96h2.38c3.4 0 4.17-2.58 4.17-3.81 0-2-1.27-3.81-4.05-3.81H11.7v7.62z"/></svg>
+        ORCID</a>
+      <a href="Nishchay_Patel_CV.pdf">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M12 18v-6m-3 3 3 3 3-3"/></svg>
+        CV (PDF)</a>
+    </div>
+  </div>
+
+  <section id="about">
+    <h2>About</h2>
+    <p>I'm a demand planning data analyst at Holland America Group. I was the
+    first hire on its demand planning team and helped build the forecasting
+    infrastructure behind roughly 1.8 million stock keeping units. My research
+    grew out of that work, and I write it on my own time. I hold a Master of
+    Engineering in Industrial and Systems Engineering from Virginia Tech.</p>
+  </section>
+
+  <section id="research">
+    <h2>Research interests</h2>
+    <ul class="interests">
+      <li>AI-driven versus conventional methods in operations research: where
+      learned models improve planning and inventory decisions, and where
+      classical methods still win.</li>
+      <li>Pretrained time-series models used zero-shot for stocking decisions,
+      and how to tell a gain that generalizes from one memorized in
+      pretraining.</li>
+      <li>Decision-aligned evaluation of intermittent and lumpy demand: scoring a
+      forecast by simulating the inventory policy it feeds.</li>
+      <li>Demand estimation from censored records, where what gets observed
+      depends on the stock on hand.</li>
+      <li>Reproducible benchmarks on public data.</li>
+    </ul>
+  </section>
+
+  <section id="papers">
+    <h2>Working papers</h2>
+
+    <article class="card">
+      <div class="meta sans"><span class="pill">Preprint</span> 2026 · Version 2, October 7 · Sole author</div>
+      <h3>Evaluation design decides the winner: horizon, leakage and metric
+      effects in intermittent demand forecasting</h3>
+      <p class="note">Classical, gradient-boosted, deep and pretrained zero-shot
+      forecasters on M5 (30,490 series) and UCI Online Retail II (4,675 series),
+      all under one rolling-origin protocol. Changing only the evaluation design
+      reorders the methods.</p>
+      <ul class="findings">
+        <li>Scoring cumulative lead-time demand instead of one step ahead moves
+        Croston's method on M5 from last of eight classical methods to fifth at
+        a 13-week lead time.</li>
+        <li>Same-week price features in the initial Online Retail II setup leaked
+        the target and carried 42 percent of the boosted model's gain. Once they
+        were removed, the model fell from ahead of all eight classical methods to
+        behind five of them.</li>
+        <li>Neither pretrained zero-shot model (Chronos-Bolt, TimesFM) beats the
+        best trained model in any sparse demand class on either panel.</li>
+      </ul>
+      <div class="actions sans">
+        <a href="https://doi.org/10.5281/zenodo.23004062">Preprint (DOI)</a>
+        <a href="https://github.com/NISHCHAY026/ai-demand-planning-benchmark">Code and per-series results</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="meta sans"><span class="pill">Preprint</span> 2026 · Sole author</div>
+      <h3>Evaluation pitfalls in intermittent-demand forecasting and inventory
+      policy: a fleet-scale study of how far accuracy, calibration, and cost
+      disagree</h3>
+      <p class="note">Eleven forecasters, from an operator's three deployed
+      methods to gradient boosting and a pretrained zero-shot model, on 191,613
+      spare-parts items. Each forecaster is scored on point error and on
+      simulated cost under an (s, S) inventory policy.</p>
+      <ul class="findings">
+        <li>The per-item Kendall tau-b between error rank and cost rank is 0.35
+        on demand-active items, so accuracy predicts cost only moderately.</li>
+        <li>Safety stock taken from the predictive quantiles of count and boosted
+        models did not beat a normal-approximation formula at matched fill rate,
+        and the best-calibrated model lost the most.</li>
+      </ul>
+      <div class="actions sans">
+        <a href="https://doi.org/10.5281/zenodo.23222105">Preprint (DOI)</a>
+        <span style="color:var(--faint)">Anonymized data available on request</span>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="meta sans"><span class="pill review">Under review</span> 2026 · Sole author</div>
+      <h3>Navigating altmetrics: insights into data consistency, provenance, and
+      applications</h3>
+    </article>
+  </section>
+
+  <section id="software">
+    <h2>Research software and projects</h2>
+    <div class="grid">
+      <article class="card">
+        <h3><a href="https://github.com/NISHCHAY026/ai-demand-planning-benchmark">ai-demand-planning-benchmark</a></h3>
+        <p>Regenerates every table and figure in version 2 of the evaluation-design
+        preprint from raw public data. A consistency script runs more than 470
+        checks of the manuscript's numbers against the result files, and each
+        correction made since version 1 is documented.</p>
+        <div class="tags sans"><span class="tag">Python</span><span class="tag">LightGBM</span><span class="tag">NeuralForecast</span><span class="tag">M5</span></div>
+      </article>
+      <article class="card">
+        <h3><a href="https://github.com/NISHCHAY026/premarket-trader">premarket-trader</a></h3>
+        <p>Premarket momentum model for US equities. Walk-forward, out-of-fold
+        trade selection feeds an event-driven backtester, and the README lists
+        its limits: few out-of-sample trades, daily bars only, survivorship
+        bias.</p>
+        <div class="tags sans"><span class="tag">Python</span><span class="tag">walk-forward</span><span class="tag">backtesting</span></div>
+      </article>
+      <article class="card">
+        <h3><a href="https://github.com/NISHCHAY026/sector-rotation-rrg">sector-rotation-rrg</a></h3>
+        <p>Relative rotation dashboard over the eleven SPDR sector ETFs against
+        SPY, refreshed on demand from a live data pull.</p>
+        <div class="tags sans"><span class="tag">Python</span><span class="tag">dashboard</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <div class="entry">
+      <div class="when sans">Sep 2023 to present</div>
+      <div>
+        <div class="what">Technical Demand Planning Data Analyst</div>
+        <div class="where">Holland America Group · Seattle, WA (remote)</div>
+        <ul>
+          <li>Tested the in-house best-fit model selection on 12 held-out
+          quarters. In sample it ranked SBA best on 78 percent of series. Out of
+          sample SBA was best on 40 percent and scored worse than a naive
+          forecast.</li>
+          <li>Designed an order rationalization model that flags excess purchase
+          commitments. Buyers reviewed the flags and canceled about $24 million
+          of commitments across fiscal 2024 and 2025.</li>
+          <li>Built the SKU velocity segmentation that sets minimum, maximum and
+          reorder quantities for roughly 1.8 million SKUs.</li>
+          <li>Refactored more than 80 stored procedures behind the forecasting
+          pipelines and moved more than 50 BI assets onto Snowflake.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when sans">Jan 2022 to Jun 2023</div>
+      <div>
+        <div class="what">Instructional Assistant, Math Emporium</div>
+        <div class="where">Virginia Tech</div>
+        <ul>
+          <li>Tutored more than 150 students a semester in linear algebra and
+          calculus, and trained new tutors.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when sans">Aug 2019 to Jun 2021</div>
+      <div>
+        <div class="what">Data Analyst</div>
+        <div class="where">Radixweb, Ahmedabad</div>
+        <ul>
+          <li>Built and tuned ETL pipelines into a data warehouse for a financial
+          services client.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="when sans">2023</div>
+      <div>
+        <div class="what">Master of Engineering, Industrial and Systems Engineering</div>
+        <div class="where">Virginia Tech, Blacksburg, VA</div>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="when sans">2021</div>
+      <div>
+        <div class="what">Bachelor of Engineering, Mechanical Engineering</div>
+        <div class="where">L.J. Institute of Engineering and Technology (Gujarat Technological University), Ahmedabad · CGPA 8.65/10, first class with distinction</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Tools and methods</h2>
+    <div class="skills">
+      <div><b>Programming:</b> Python (pandas, NumPy, scikit-learn, PyTorch), SQL, LaTeX, Git</div>
+      <div><b>Models:</b> LightGBM, NHITS, DeepAR, Chronos-Bolt, TimesFM, Croston, SBA, TSB, exponential smoothing, ADIDA, MAPA</div>
+      <div><b>Evaluation:</b> rolling-origin design, MASE and RMSSE, (s, S) and base-stock simulation, bootstrap intervals, Nemenyi and MCB comparisons, quantile calibration</div>
+      <div><b>Platforms:</b> Snowflake, SQL Server, Azure, Power BI, Kinaxis Maestro</div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="sans">Last updated October 2026.</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement, btn = document.getElementById('theme');
+    try { var saved = localStorage.getItem('theme'); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+    btn.addEventListener('click', function () {
+      var cur = root.getAttribute('data-theme') ||
+        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      var next = cur === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+  })();
+</script>
+</body>
+</html>
